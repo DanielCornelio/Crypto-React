@@ -31,11 +31,11 @@ state = {
   //cotizar una crypto en base a una moneda
   obtenerValoresCrypto = async (monedas) =>{
     const { moneda, crypto} = monedas;
-    const url = `http://api.coinmarketcap.com/v2/ticker/${crypto}/?convert=${moneda}`;
+    const url = `https://api.coinmarketcap.com/v2/ticker/${crypto}/?convert=${moneda}`;
     await axios.get(url)
       .then(respuesta=>{
         this.setState({
-          cotizacion :respuesta.data.data,
+          cotizacion: respuesta.data.data,
           monedaCotizada: moneda
         })
       })
@@ -53,7 +53,8 @@ state = {
               obtenerValoresCrypto={this.obtenerValoresCrypto}
             />
             <Resultado
-              cotizacion={this.state.cotizacion}
+              cotizacion = {this.state.cotizacion}
+              monedaCotizada = {this.state.monedaCotizada}
             />
           </div>
         </div>
